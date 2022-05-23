@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
-    <script src="./script.js"></script>
     <div class="header">
         <h1>Rock Paper Scissors</h1>
         <span>This lady is quite aggressive. What are you going to do?</span>
+    </div>
+    <div class="console">
+        Choose your weapon
     </div>
     <div class="container">
         <div class="card">
             <img src="./images/depositphotos_42708415-stock-photo-old-woman-with-pistol.jpg" alt="">
             <div class="options">
-                <div class="text">[Rock. Bruteforce] Throw a random item from your pocket</div>
-                <div class="text">[Paper. Brain] Show her a lawbook</div>
-                <div class="text">[Scissors. Melee Weapons] Reflect the bullet with pocketknife</div>
+                <div id="rock" class="text" onclick="gameRound('rock')">[Rock. Bruteforce] Throw a random item from your pocket</div>
+                <div id="paper" class="text" onclick="gameRound('paper')">[Paper. Brain] Show her a lawbook</div>
+                <div id="scissors" class="text" onclick="gameRound('scissors')">[Scissors. Melee Weapons] Reflect the bullet with pocketknife</div>
             </div>
-        </div>
-        <div class="console">
         </div>
     </div>
     <div class="footer">
