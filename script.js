@@ -3,23 +3,40 @@ let playerScore = 0;
 let computerScore = 0;
 
 const consoleDiv = document.querySelector('.console');
-
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         const playerSelection = prompt('Choose your weapon');
-//         const computerSelection = computerPlay();
-//         console.log(gameRound(playerSelection.toLowerCase(), computerSelection));
-//     }
-// }
+const scoreDiv = document.querySelector('.score');
+const modal = document.querySelector('#resetGame');
+const span = document.querySelector('.close');
 
 function computerPlay() {
     return variant[Math.floor(Math.random() * 3)];
 }
 
+function finishGame(winner) {
+    modal.style.display = 'block';
+    const content = document.createElement('p');
+    const container = document.querySelector('.modal-body');
+    content.classList.add('message');
+    if (winner === 'player') {
+        content.textContent = "You're the winner!";
+        container.appendChild(content);
+    } else {
+        content.textContent = 'Computer is the winner!';
+        container.appendChild(content);
+    }
+}
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    const element = document.querySelector('.message');
+    element.remove();
+    modal.style.display = 'none';
+    consoleDiv.textContent = 'Choose your weapon';
+    scoreDiv.textContent = `You: ${playerScore} Computer: ${computerScore}`;
+}
+
 function gameRound(playerSelection){
-    console.log(playerSelection);
     const computerSelection = computerPlay();
-    console.log(computerSelection);
     if (playerSelection == computerSelection) consoleDiv.textContent = "It's a tie!";
     else switch(playerSelection) {
         case 'rock':
@@ -56,8 +73,10 @@ function gameRound(playerSelection){
                 break;
             }
     }
-}
 
-if (playerScore == computerScore) console.log("It's a tie!");
-else if (playerScore > computerScore) console.log(`You're a winner! You won ${playerScore} times`);
-else console.log(`Computer is a winner! It won ${computerScore} times`); 
+    scoreDiv.textContent = `You: ${playerScore} Computer: ${computerScore}`;
+
+
+    if (playerScore === 5) finishGame('player');
+    if (computerScore === 5) finishGame('computer');
+}
