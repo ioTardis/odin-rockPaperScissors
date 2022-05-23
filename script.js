@@ -2,13 +2,13 @@ const variant = ['rock', 'paper', 'scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Choose your weapon');
-        const computerSelection = computerPlay();
-        console.log(gameRound(playerSelection.toLowerCase(), computerSelection));
-    }
-}
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = prompt('Choose your weapon');
+//         const computerSelection = computerPlay();
+//         console.log(gameRound(playerSelection.toLowerCase(), computerSelection));
+//     }
+// }
 
 function computerPlay() {
     return variant[Math.floor(Math.random() * 2)];
