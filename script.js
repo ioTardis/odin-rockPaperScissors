@@ -2,14 +2,20 @@ const variant = ['rock', 'paper', 'scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
+//Targeting input DOM nodes with selectors
+
 const consoleDiv = document.querySelector('.console');
 const scoreDiv = document.querySelector('.score');
 const modal = document.querySelector('#resetGame');
 const span = document.querySelector('.close');
 
+//Computer's choice
+
 function computerPlay() {
     return variant[Math.floor(Math.random() * 3)];
 }
+
+//Function that reveals a winner
 
 function finishGame(winner) {
     modal.style.display = 'block';
@@ -25,6 +31,8 @@ function finishGame(winner) {
     }
 }
 
+//Function to reset the game
+
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
@@ -34,6 +42,8 @@ function resetGame() {
     consoleDiv.textContent = 'Choose your weapon';
     scoreDiv.textContent = `You: ${playerScore} Computer: ${computerScore}`;
 }
+
+//Function to play one round
 
 function gameRound(playerSelection){
     const computerSelection = computerPlay();
